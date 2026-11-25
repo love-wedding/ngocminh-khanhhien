@@ -1,0 +1,82 @@
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
+    
+    // Log để debug
+    Logger.log("Raw postData: " + JSON.stringify(e));
+    Logger.log("Parameter: " + JSON.stringify(e.parameter));
+    
+    // Đọc từ parameter (do bạn dùng FormData)
+    var fullName = e.parameter.full_name || "";
+    var relation = e.parameter.relation || "";
+    var message = e.parameter.message || "";
+    var attend = e.parameter.attend || "";
+    
+    // Log giá trị nhận được
+    Logger.log("Full Name: " + fullName);
+    Logger.log("Relation: " + relation);
+    Logger.log("Message: " + message);
+    Logger.log("Attend: " + attend);
+    
+    // Ghi vào sheet
+    sheet.appendRow([
+      new Date(),
+      fullName,
+      relation,
+      message,
+      attend
+    ]);
+    
+    return ContentService
+      .createTextOutput(JSON.stringify({ 
+        status: "success",
+        data: {
+          fullName: fullName,
+          relation: relation,
+          message: message,
+          attend: attend
+        }
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+      
+  } catch (error) {
+    Logger.log("Error: " + error.toString());
+    return ContentService
+      .createTextOutput(JSON.stringify({ 
+        status: "error",
+        message: error.toString()
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+function doGet(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
+    var data = sheet.getDataRange().getValues();
+
+    // Bỏ dòng header
+    data.shift();
+
+    var result = data.map(function(row) {
+      return {
+        name: row[1] || "",     // full_name
+        message: row[3] || "",  // message
+        time: row[0] 
+          ? new Date(row[0]).toISOString()
+          : ""
+      };
+    });
+
+    return ContentService
+      .createTextOutput(JSON.stringify(result))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        status: "error",
+        message: error.toString()
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}

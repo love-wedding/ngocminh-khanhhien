@@ -10357,6 +10357,253 @@
         #w-dotted-line-guest-name .line-container {
             border-top: 1px dotted rgb(0, 0, 0);
         }
+
+        /* ======================================================
+           STYLING: DANH SÁCH LỜI CHÚC (GUESTBOOK)
+        ====================================================== */
+        .wishes-section {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            background: rgba(65, 94, 52, 1.000);
+            box-sizing: border-box;
+            padding: 10px 18px 36px 18px;
+            font-family: 'Lora-Regular.ttf', serif;
+            color: #ffffff;
+            margin-bottom: -1px;
+        }
+
+        .wishes-container {
+            width: 100%;
+            max-width: 384px;
+            margin: 0 auto;
+        }
+
+        .wishes-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            opacity: 0.6;
+        }
+
+        .wishes-divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+        }
+
+        .wishes-divider-icon {
+            font-size: 14px;
+        }
+
+        .wishes-header {
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .wishes-header-title {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 4px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .wishes-header-sub {
+            font-size: 11.5px;
+            color: rgba(255, 255, 255, 0.85);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .wishes-header-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2px;
+            margin-bottom: 10px;
+        }
+
+        .wishes-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 3px 12px;
+            font-size: 11px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .wishes-reload-btn {
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 11px;
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.25s ease;
+            font-family: inherit;
+        }
+
+        .wishes-reload-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .wishes-reload-btn.spinning svg {
+            animation: wishSpin 0.7s linear infinite;
+        }
+
+        @keyframes wishSpin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .wishes-box {
+            max-height: 400px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 4px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Custom Scrollbar */
+        .wishes-box::-webkit-scrollbar {
+            width: 5px;
+        }
+        .wishes-box::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+        }
+        .wishes-box::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.35);
+            border-radius: 10px;
+        }
+        .wishes-box::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        /* Wish Card */
+        .wish-card {
+            background: #ffffff;
+            border-radius: 13px;
+            padding: 12px 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            color: #333333;
+            animation: wishFadeIn 0.35s ease-out;
+            transition: transform 0.15s ease;
+        }
+
+        @keyframes wishFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wish-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wish-avatar {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #415E34, #628652);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(65, 94, 52, 0.25);
+        }
+
+        .wish-author-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .wish-author-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #2b3d23;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+        }
+
+        .wish-author-time {
+            font-size: 10px;
+            color: #8c9b88;
+            margin-top: 1px;
+        }
+
+        .wish-card-stamp {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .wish-card-body {
+            margin-top: 8px;
+            padding: 7px 10px;
+            background: rgba(65, 94, 52, 0.04);
+            border-left: 2.5px solid #6b8f59;
+            border-radius: 0 7px 7px 0;
+            font-size: 12px;
+            line-height: 1.55;
+            color: #2e3b2b;
+            word-break: break-word;
+        }
+
+        /* States */
+        .wishes-state-loading {
+            padding: 30px 10px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+        }
+
+        .wishes-spinner {
+            width: 24px;
+            height: 24px;
+            margin: 0 auto 10px auto;
+            border: 2.5px solid rgba(255, 255, 255, 0.25);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: wishSpin 0.8s linear infinite;
+        }
+
+        .wishes-empty {
+            padding: 24px 16px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px dashed rgba(255, 255, 255, 0.35);
+            border-radius: 12px;
+            color: #ffffff;
+        }
     </style>
 </head>
 
@@ -11036,6 +11283,37 @@
                 </div>
             </div>
         </div>
+        <!-- ======================================================
+             SECTION: DANH SÁCH LỜI CHÚC (GUESTBOOK)
+        ====================================================== -->
+        <div id="wishes-guestbook-section" class="wishes-section">
+            <div class="wishes-container">
+                <div class="wishes-divider">
+                    <span class="wishes-divider-line"></span>
+                    <span class="wishes-divider-icon">❦</span>
+                    <span class="wishes-divider-line"></span>
+                </div>
+
+                <div class="wishes-header">
+                    <div class="wishes-header-title">SỔ LƯU BÚT CHÚC MỪNG</div>
+                    <div class="wishes-header-sub">Những lời chúc yêu thương gửi đến Dâu &amp; Rể</div>
+                    <div class="wishes-header-meta">
+                        <span id="wishes-count" class="wishes-count">💌 Đang tải...</span>
+                        <button type="button" id="wishes-btn-reload" class="wishes-reload-btn" title="Cập nhật lời chúc mới nhất">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                            Làm mới
+                        </button>
+                    </div>
+                </div>
+
+                <div id="wishes-box" class="wishes-box">
+                    <div class="wishes-state-loading">
+                        <div class="wishes-spinner"></div>
+                        <p>Đang tải những lời chúc ý nghĩa... ✨</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- <div id="w-oq9g6uhe" class="com-section" data-section>
             <div class="section-wrapper full-width full-height p-relative">
                 <div class="section-background p-absolute full-width full-height lazy"></div>
@@ -11327,13 +11605,176 @@
         }, true);
 
         /* ======================================================
-           3. SUBMIT → GOOGLE APPS SCRIPT
+           3. SUBMIT → GOOGLE APPS SCRIPT & LOAD WISHES
         ====================================================== */
         document.addEventListener("DOMContentLoaded", function () {
 
             const form = document.getElementById("9ppmw9gy");
             const scriptURL = "https://script.google.com/macros/s/AKfycbxSzbpagGS9TAhvns3DxYEQmrQPkknrj2zX7nYDWjTeyYp15sAv5k83eKq6WC7RdRI-/exec";
 
+            /* --- Utility: Escape HTML để tránh lỗi bảo mật/hiển thị ký tự lạ --- */
+            function escapeHtml(str) {
+                if (!str) return "";
+                return String(str)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+
+            /* --- Utility: Format thời gian hiển thị thân thiện --- */
+            function formatWishTime(timeStr) {
+                if (!timeStr) return "";
+                try {
+                    const date = new Date(timeStr);
+                    if (isNaN(date.getTime())) return "";
+
+                    const now = new Date();
+                    const diffMs = now - date;
+                    const diffMin = Math.floor(diffMs / 60000);
+                    const diffHour = Math.floor(diffMin / 60);
+                    const diffDay = Math.floor(diffHour / 24);
+
+                    if (diffMin < 1) return "Vừa xong";
+                    if (diffMin < 60) return diffMin + " phút trước";
+                    if (diffHour < 24) return diffHour + " giờ trước";
+                    if (diffDay === 1) {
+                        const hh = String(date.getHours()).padStart(2, "0");
+                        const mm = String(date.getMinutes()).padStart(2, "0");
+                        return "Hôm qua lúc " + hh + ":" + mm;
+                    }
+
+                    const dd = String(date.getDate()).padStart(2, "0");
+                    const mo = String(date.getMonth() + 1).padStart(2, "0");
+                    const yyyy = date.getFullYear();
+                    const hh = String(date.getHours()).padStart(2, "0");
+                    const mm = String(date.getMinutes()).padStart(2, "0");
+                    return dd + "/" + mo + "/" + yyyy + " " + hh + ":" + mm;
+                } catch (e) {
+                    return "";
+                }
+            }
+
+            /* --- Utility: Lấy chữ cái đầu cho avatar --- */
+            function getInitialLetter(name) {
+                if (!name) return "💌";
+                const trimmed = name.trim();
+                if (!trimmed) return "💌";
+                const firstChar = Array.from(trimmed)[0];
+                return firstChar.toUpperCase();
+            }
+
+            /* --- Hàm tải và hiển thị danh sách lời chúc từ Google Sheet --- */
+            async function loadWishes(showSpinner) {
+                const wishesBox = document.getElementById("wishes-box");
+                const wishesCount = document.getElementById("wishes-count");
+                const reloadBtn = document.getElementById("wishes-btn-reload");
+
+                if (reloadBtn) reloadBtn.classList.add("spinning");
+
+                if (showSpinner && wishesBox) {
+                    wishesBox.innerHTML = `
+                        <div class="wishes-state-loading">
+                            <div class="wishes-spinner"></div>
+                            <p>Đang tải những lời chúc ý nghĩa... ✨</p>
+                        </div>
+                    `;
+                }
+
+                try {
+                    const response = await fetch(scriptURL + "?_t=" + Date.now());
+                    const data = await response.json();
+
+                    if (Array.isArray(data)) {
+                        // Lọc các lời chúc có nội dung hoặc có tên
+                        const validWishes = data.filter(function (item) {
+                            return (item.message && item.message.trim().length > 0) ||
+                                   (item.name && item.name.trim().length > 0);
+                        });
+
+                        // Đảo ngược để lời chúc mới nhất lên đầu trang
+                        validWishes.reverse();
+
+                        if (wishesCount) {
+                            wishesCount.textContent = "💌 " + validWishes.length + " lời chúc";
+                        }
+
+                        if (validWishes.length === 0) {
+                            if (wishesBox) {
+                                wishesBox.innerHTML = `
+                                    <div class="wishes-empty">
+                                        <div style="font-size: 28px; margin-bottom: 6px;">💌</div>
+                                        <div style="font-size: 13.5px; font-weight: 600;">Chưa có lời chúc nào</div>
+                                        <div style="font-size: 11.5px; opacity: 0.85; margin-top: 3px;">Hãy là người đầu tiên gửi lời chúc phúc đến Dâu Rể nhé! ✨</div>
+                                    </div>
+                                `;
+                            }
+                            return;
+                        }
+
+                        let html = "";
+                        validWishes.forEach(function (item) {
+                            const name = (item.name && item.name.trim()) ? item.name.trim() : "Khách ẩn danh";
+                            const message = (item.message && item.message.trim()) ? item.message.trim() : "(Đã xác nhận tham dự)";
+                            const timeStr = formatWishTime(item.time);
+                            const initial = getInitialLetter(name);
+
+                            html += `
+                                <div class="wish-card">
+                                    <div class="wish-card-header">
+                                        <div class="wish-avatar">${escapeHtml(initial)}</div>
+                                        <div class="wish-author-info">
+                                            <div class="wish-author-name">${escapeHtml(name)}</div>
+                                            ${timeStr ? `<div class="wish-author-time">${escapeHtml(timeStr)}</div>` : ""}
+                                        </div>
+                                        <div class="wish-card-stamp">💐</div>
+                                    </div>
+                                    <div class="wish-card-body">
+                                        ${escapeHtml(message)}
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        if (wishesBox) {
+                            wishesBox.innerHTML = html;
+                        }
+                    } else {
+                        throw new Error("Dữ liệu trả về không đúng định dạng");
+                    }
+                } catch (err) {
+                    console.error("Lỗi khi tải danh sách lời chúc:", err);
+                    if (wishesBox && (!wishesBox.children.length || wishesBox.querySelector(".wishes-state-loading"))) {
+                        wishesBox.innerHTML = `
+                            <div class="wishes-empty">
+                                <div style="font-size: 24px; margin-bottom: 6px;">💌</div>
+                                <div style="font-size: 12.5px;">Chưa thể tải danh sách lúc này</div>
+                                <button type="button" id="wishes-btn-retry" style="margin-top: 10px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 11px; cursor: pointer;">Thử lại</button>
+                            </div>
+                        `;
+                        const retryBtn = document.getElementById("wishes-btn-retry");
+                        if (retryBtn) retryBtn.addEventListener("click", () => loadWishes(true));
+                    }
+                } finally {
+                    if (reloadBtn) {
+                        setTimeout(() => reloadBtn.classList.remove("spinning"), 500);
+                    }
+                }
+            }
+
+            // Gắn sự kiện nút làm mới
+            const reloadBtn = document.getElementById("wishes-btn-reload");
+            if (reloadBtn) {
+                reloadBtn.addEventListener("click", function () {
+                    loadWishes(true);
+                });
+            }
+
+            // Tải danh sách lời chúc ngay khi trang web tải xong
+            loadWishes(true);
+
+            // Gửi form
             if (!form) return;
 
             form.addEventListener("submit", function (e) {
@@ -11376,6 +11817,14 @@
                                 showConfirmButton: false
                             });
 
+                            // Xoá trắng ô input sau khi gửi thành công
+                            form.reset();
+
+                            // Cập nhật lại danh sách lời chúc ngay lập tức
+                            setTimeout(function () {
+                                loadWishes(false);
+                            }, 1200);
+
                         } else {
                             throw new Error("Exec error");
                         }
@@ -11387,7 +11836,12 @@
                             title: "❌ Gửi thất bại",
                             text: "Vui lòng thử lại sau!"
                         });
-
+                    })
+                    .finally(() => {
+                        if (btn) {
+                            btn.style.pointerEvents = "auto";
+                            btn.style.opacity = "1";
+                        }
                     });
             });
         });
